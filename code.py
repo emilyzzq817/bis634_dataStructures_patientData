@@ -115,7 +115,6 @@ if target_index < len(age_index) and age_index[target_index] == target_age:
 else:
     print("No patient is exactly 41.5 years old.")
 
-
 # 1f. Count patients age 41.5 or older
 patients_at_least_41_5 = len(age_index) - target_index
 
@@ -131,7 +130,6 @@ def count_age_range(low_age, high_age):
 
     return high_index - low_index
 
-
 # Test cases
 print("Patients aged 41.5 to under 50:", count_age_range(41.5, 50))
 print("Patients aged 0 to under 100:", count_age_range(0, 100))
@@ -145,7 +143,6 @@ male_prefix = [0]
 for patient in patients_sorted_by_age:
     is_male = patient.attrib["gender"] == "male"
     male_prefix.append(male_prefix[-1] + is_male)
-
 
 def count_age_and_male_range(low_age, high_age):
     if low_age >= high_age:
