@@ -24,3 +24,8 @@ I first used the patient list sorted in 1c. to create `age_index`, which contain
 
 My function returns the first position where 41.5 could be placed while preserving the age order. If an exact 41.5 value is present, that position
 corresponds to the first matching patient. If several patients have the same age, starting at the first match makes the result consistent. If 41.5 is not present, the returned position is where it would be inserted, and the equality check reports that there is no exact match.
+
+
+### 1f. Counting patients aged at least 41.5
+
+The left-bound binary search returns the index of the first age that is greater than or equal to 41.5. Because `age_index` is sorted in ascending order, every record from that index through the end of the list is at least 41.5 years old. Therefore, I calculated the count as `len(age_index) - target_index`. This calculation takes O(1) time after the O(log n) binary search. The dataset contained **150,471** patients aged 41.5 or older.
