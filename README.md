@@ -26,6 +26,18 @@ My function returns the first position where 41.5 could be placed while preservi
 corresponds to the first matching patient. If several patients have the same age, starting at the first match makes the result consistent. If 41.5 is not present, the returned position is where it would be inserted, and the equality check reports that there is no exact match.
 
 
-### 1f. Counting patients aged at least 41.5
-
+### 1f.
 The left-bound binary search returns the index of the first age that is greater than or equal to 41.5. Because `age_index` is sorted in ascending order, every record from that index through the end of the list is at least 41.5 years old. Therefore, I calculated the count as `len(age_index) - target_index`. This calculation takes O(1) time after the O(log n) binary search. The dataset contained **150,471** patients aged 41.5 or older.
+
+
+### 1g. 
+I wrote `count_age_range(low_age, high_age)` to count patients with `low_age ≤ age < high_age`. I used binary search to find where the lower and upper age bounds would be in the sorted age list. The number of patients in the range is the difference between these two positions.
+
+I tested a normal range, `[41.5, 50)`, a range covering the full dataset, `[0, 100)`, an out-of-bounds range, `[90, 100)`, and an empty range, `[41.5, 41.5)`. The empty range returns zero. Each query remains O(log n) because it performs two O(log n) binary searches and then one O(1) subtraction.
+
+### 1h. Age and gender range queries
+I wanted to count male patients in an age range without checking every patient in that range one by one. After sorting the patients by age, I made a list called `male_prefix`. As I move through the sorted list, this list keeps track of how many male patients have appeared so far.
+
+For each age query, I use binary search to find the beginning and end of the requested range. The total number of patients is the difference between those two indices. To get the male count, I subtract the number of males before the start of the range from the number of males before the end of the range.
+
+Creating `male_prefix` takes O(n) time once. After that, each query uses two binary searches, so it takes O(log n) time.
