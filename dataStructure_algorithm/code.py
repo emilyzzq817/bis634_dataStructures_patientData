@@ -9,7 +9,6 @@ def alg1(data):
                 changes = True
     return data
 
-
 def alg2(data):
     if len(data) <= 1:
         return data
@@ -56,7 +55,7 @@ def data2(n):
 def data3(n):
     return list(range(n, 0, -1))
 
-
+# 2a. 
 test_cases = [
     [1, 2, 3],
     [3, 2, 1],
@@ -68,3 +67,49 @@ for values in test_cases:
     print(f"Input: {values}")
     print(f"alg1:  {alg1(values)}")
     print(f"alg2:  {alg2(values)}")
+
+
+# 2b.
+import time
+import matplotlib.pyplot as plt
+
+sizes = np.unique(np.logspace(1, 3, 8, dtype=int))
+fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+
+for ax, generator in zip(axes, [data1, data2, data3]):
+    alg1_times = []
+    alg2_times = []
+
+    for n in sizes:
+        test_data = generator(n)  # Pre-generate outside the timing block
+
+        start_time = time.perf_counter()
+        result1 = alg1(test_data)
+        end_time = time.perf_counter()
+        alg1_time = end_time - start_time
+
+        start_time = time.perf_counter()
+        result2 = alg2(test_data)
+        end_time = time.perf_counter()
+        alg2_time = end_time - start_time
+
+        alg1_times.append(alg1_time)
+        alg2_times.append(alg2_time)
+
+        print(
+            f"{generator.__name__}, n={n}, "
+            f"alg1={alg1_time:.6f}s, alg2={alg2_time:.6f}s"
+        )
+
+    ax.plot(sizes, alg1_times, "o-", label="alg1")
+    ax.plot(sizes, alg2_times, "o-", label="alg2")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_title(generator.__name__)
+    ax.set_xlabel("Input size (n)")
+    ax.set_ylabel("Time (seconds)")
+    ax.legend()
+
+plt.tight_layout()
+plt.savefig("benchmark.png")
+plt.show()
