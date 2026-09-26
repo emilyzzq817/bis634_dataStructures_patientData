@@ -1,3 +1,5 @@
+from pathlib import Path
+
 def alg1(data):
     data = list(data)
     changes = True
@@ -111,5 +113,5 @@ for ax, generator in zip(axes, [data1, data2, data3]):
     ax.legend()
 
 plt.tight_layout()
-plt.savefig("benchmark.png")
+plt.savefig(Path(__file__).resolve().parent / "benchmark.png")
 plt.show()
