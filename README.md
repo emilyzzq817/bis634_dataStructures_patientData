@@ -1,4 +1,6 @@
-# bis634_dataStructures
+# bis634 Data Structures Patient Data
+Emily Zhang
+netID: zz598
 
 ## 1a. Histogram of Patient Ages
 
