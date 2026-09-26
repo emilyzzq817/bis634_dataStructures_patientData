@@ -4,7 +4,7 @@ import pandas as pd
 from pathlib import Path
 
 PROJECT_DIR = Path(__file__).resolve().parent
-data = pd.read_csv(PROJECT_DIR / "data" / "us-states.csv")
+data = pd.read_csv(PROJECT_DIR / "us-states.csv")
 data["date"] = pd.to_datetime(data["date"])
 
 
@@ -29,7 +29,7 @@ def plot_daily_cases(states):
     plt.ylabel("Daily New Cases")
     plt.legend()
     plt.tight_layout()
-    output_path = PROJECT_DIR / "figures" / "daily_cases_comparison.png"
+    output_path = PROJECT_DIR / "daily_cases_comparison.png"
     plt.savefig(output_path, dpi=300)
     plt.close()
     return output_path

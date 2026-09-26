@@ -41,6 +41,6 @@ Descriptive analysis of a population JSON dataset, including age and weight dist
 Analysis of reported daily COVID-19 cases in California, Florida, and New York, including peak-date comparison and a reporting-anomaly check.
 
 - [Analysis code](standards_covid19/covid_analysis.py)
-- [Dataset](standards_covid19/data/us-states.csv)
-- [Daily-case comparison figure](standards_covid19/figures/daily_cases_comparison.png)
+- [Dataset](standards_covid19/us-states.csv)
+- [Daily-case comparison figure](standards_covid19/daily_cases_comparison.png)
 - [Project notes](standards_covid19/README.md)
