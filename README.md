@@ -1,4 +1,4 @@
-# BIS 634 Portfolio: Data Structures Patient Data
+# BIS 634 Portfolio
 
 Emily Zhang
 NetID: zz598
@@ -7,14 +7,15 @@ This repository collects coursework for BIS 634: Computational Methods for Infor
 
 ## Projects
 
-### [Data Structures](.)
+### [Patient Data and Data Structures](patient_data/)
 
-Patient-record analysis using XML, sorting, binary search, and prefix sums. The program parses the patient data, produces age and gender visualizations, and supports efficient age-range queries.
+Patient-record analysis using XML, sorting, binary search, and prefix sums.
 
-- [Code](code.py)
-- [Patient data](patients.xml)
-- [Age histogram](age_histogram.png)
-- [Gender bar chart](gender_bar.png)
+- [Code](patient_data/code.py)
+- [Patient data](patient_data/patients.xml)
+- [Age histogram](patient_data/age_histogram.png)
+- [Gender bar chart](patient_data/gender_bar.png)
+- [Detailed analysis](patient_data/README.md)
 
 ### [Big Data and Bloom Filters](big_data/)
 
@@ -43,29 +44,3 @@ Analysis of reported daily COVID-19 cases in California, Florida, and New York, 
 - [Dataset](covid/data/us-states.csv)
 - [Daily-case comparison figure](covid/figures/daily_cases_comparison.png)
 - [Project notes](covid/README.md)
-
-## Data Structures Exercise Notes
-
-### Histogram of patient ages
-
-![Histogram of Patient Ages](age_histogram.png)
-
-I explored histograms with 5, 10, and 20 bins. I selected 10 bins because it provided enough detail to show the age distribution without making the histogram overly fragmented.
-
-### Gender distribution
-
-Gender is encoded as a `gender` attribute within each `<patient>` record, rather than as a patient element. The distinct categories in the XML dataset were printed by the analysis code. A bar chart was used because gender is categorical data.
-
-![Bar of Gender distribution](gender_bar.png)
-
-### Sorting and top-k retrieval
-
-The `get_age()` function extracts each patient's `age` attribute and converts it to a float. Sorting with this function as the key orders patients from youngest to oldest; numeric conversion is necessary because XML attributes are strings. The final record in the sorted list is the oldest patient.
-
-For a single request to find the second-oldest patient, an O(n) single-pass approach is more efficient because it examines each record once without sorting the complete dataset. If many later queries require age order, sorting once in O(n log n) time enables O(1) position lookups.
-
-### Binary search and range queries
-
-The left-bound binary search returns the first position where 41.5 can be inserted while preserving age order. If an exact match exists, this is the first matching patient; otherwise it is the insertion point. The number of patients aged 41.5 or older is `len(age_index) - target_index`, calculated in O(1) after the O(log n) search.
-
-For a range `[low_age, high_age)`, two binary searches locate the bounds and their index difference gives the count. The code tests normal, full-dataset, out-of-bounds, and empty ranges. A prefix sum for male patients supports age-and-gender range queries: its O(n) construction is performed once, then each query uses two binary searches and O(1) prefix-sum subtraction.

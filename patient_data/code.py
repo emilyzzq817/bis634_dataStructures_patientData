@@ -1,9 +1,12 @@
 import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
 from collections import Counter
+from pathlib import Path
+
+PROJECT_DIR = Path(__file__).resolve().parent
 
 # 1a. Parse XML & Analyze Age Distribution
-tree = ET.parse("patients.xml")
+tree = ET.parse(PROJECT_DIR / "patients.xml")
 root = tree.getroot()
 
 patients = root.find("patients")
@@ -17,7 +20,7 @@ plt.hist(ages, bins=10)
 plt.xlabel("Age")
 plt.ylabel("Number of Patients")
 plt.title("Distribution of Patient Ages")
-plt.savefig("age_histogram.png")
+plt.savefig(PROJECT_DIR / "age_histogram.png")
 plt.show()
 
 
@@ -46,7 +49,7 @@ plt.bar(
 plt.title("Distribution of Patient Genders")
 plt.xlabel("Gender")
 plt.ylabel("Number of Patients")
-plt.savefig("gender_bar.png")
+plt.savefig(PROJECT_DIR / "gender_bar.png")
 plt.show()
 
 
