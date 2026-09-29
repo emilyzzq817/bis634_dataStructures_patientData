@@ -1,8 +1,5 @@
 # COVID-19 State-Level Data
 
-Emily Zhang
-NetID: zz598
-
 This project analyzes reported daily COVID-19 cases in California, Florida, and New York from a state-level cumulative case and death time series.
 
 ## Contents
