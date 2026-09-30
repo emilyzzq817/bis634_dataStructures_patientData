@@ -1,4 +1,10 @@
-### 2a. 
+# Algorithm Analysis and Performance Measurement
+
+## Development from studio work
+
+The work progressed from small correctness checks for the two supplied sorting functions to timed experiments across chaotic, ordered, and reverse-ordered inputs. The final version separates data generation from timing, adds a log-log benchmark figure, and connects the observed scaling patterns to algorithm selection.
+
+### 2a.
 
 I tested `alg1` and `alg2` with four small lists:
 

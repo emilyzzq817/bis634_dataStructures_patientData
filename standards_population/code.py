@@ -1,9 +1,12 @@
 import json
 import statistics
 import matplotlib.pyplot as plt
+from pathlib import Path
+
+PROJECT_DIR = Path(__file__).resolve().parent
 
 # 2b.
-with open("population.json") as f:
+with open(PROJECT_DIR / "population.json") as f:
     population = json.load(f)
 
 ages = [person["demographics"]["age"] for person in population]
@@ -20,12 +23,15 @@ print("Maximum:", max(ages))
 #     plt.ylabel("Number of people")
 #     plt.show()
 
-# Final histogram: 15 bins
-plt.hist(ages, bins=15)
-plt.title("Age distribution (15 bins)")
+# Final histogram: 10 bins
+plt.figure(figsize=(8, 5))
+plt.hist(ages, bins=10)
+plt.title("Age distribution (10 bins)")
 plt.xlabel("Age")
 plt.ylabel("Number of people")
-plt.show()
+plt.tight_layout()
+plt.savefig(PROJECT_DIR / "age_distribution.png", dpi=200)
+plt.close()
 
 
 # 2c. 
@@ -44,18 +50,24 @@ print("Maximum:", max(weights))
 #     plt.show()
 
 # Final histogram: 30 bins
+plt.figure(figsize=(8, 5))
 plt.hist(weights, bins=30)
 plt.title(f"Weight distribution (30 bins)")
 plt.xlabel("Weight")
 plt.ylabel("Number of people")
-plt.show()
+plt.tight_layout()
+plt.savefig(PROJECT_DIR / "weight_distribution.png", dpi=200)
+plt.close()
 
 #2d.
+plt.figure(figsize=(8, 5))
 plt.scatter(ages, weights, s=1)
 plt.title("Weight versus age")
 plt.xlabel("Age")
 plt.ylabel("Weight")
-plt.show()
+plt.tight_layout()
+plt.savefig(PROJECT_DIR / "weight_vs_age.png", dpi=200)
+plt.close()
 
 for person in population:
     age = person["demographics"]["age"]

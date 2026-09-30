@@ -28,6 +28,9 @@ def plot_daily_cases(states):
     plt.xlabel("Date")
     plt.ylabel("Daily New Cases")
     plt.legend()
+    plt.gca().xaxis.set_major_locator(mdates.MonthLocator(interval=3))
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+    plt.gcf().autofmt_xdate()
     plt.tight_layout()
     output_path = PROJECT_DIR / "daily_cases_comparison.png"
     plt.savefig(output_path, dpi=300)

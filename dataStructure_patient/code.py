@@ -16,6 +16,10 @@ for patient in patients:
     age = patient.attrib["age"]
     ages.append(float(age))
 
+age_counts = Counter(ages)
+duplicate_age_values = sum(count > 1 for count in age_counts.values())
+print("Exact duplicate age values:", duplicate_age_values)
+
 plt.hist(ages, bins=10)
 plt.xlabel("Age")
 plt.ylabel("Number of Patients")

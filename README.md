@@ -5,6 +5,8 @@ NetID: zz598
 
 This repository collects coursework for BIS 634: Computational Methods for Informatics. Each project keeps its code, data, figures, and project-specific documentation together.
 
+The project READMEs document each analysis's code evolution, design choices, trade-offs, limitations, and key findings. The sections below provide direct access to code, data, figures, and the fuller write-ups.
+
 ## Projects
 
 ### [Patient Data and Data Structures](dataStructure_patient/)
@@ -16,6 +18,14 @@ Patient-record analysis using XML, sorting, binary search, and prefix sums.
 - [Age histogram](dataStructure_patient/age_histogram.png)
 - [Gender bar chart](dataStructure_patient/gender_bar.png)
 - [Detailed analysis](dataStructure_patient/README.md)
+
+### [Algorithm Analysis and Performance Measurement](dataStructure_algorithm/)
+
+Empirical comparison of two sorting algorithms across chaotic, ordered, and reverse-ordered inputs using log-log runtime plots.
+
+- [Code](dataStructure_algorithm/code.py)
+- [Benchmark figure](dataStructure_algorithm/benchmark.png)
+- [Detailed analysis](dataStructure_algorithm/README.md)
 
 ### [Big Data and Bloom Filters](bigData/)
 
@@ -34,6 +44,9 @@ Descriptive analysis of a population JSON dataset, including age and weight dist
 
 - [Code](standards_population/code.py)
 - [Population data](standards_population/population.json)
+- [Age histogram](standards_population/age_distribution.png)
+- [Weight histogram](standards_population/weight_distribution.png)
+- [Age-weight scatter plot](standards_population/weight_vs_age.png)
 - [Detailed analysis](standards_population/README.md)
 
 ### [COVID-19 State-Level Data](standards_covid19/)
